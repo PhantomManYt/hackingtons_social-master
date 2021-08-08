@@ -1,0 +1,1 @@
+web: gunicorn hackingtons_social.wsgi

@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+{% load bootstrap %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h1>Search Posts</h1>
+     <form class="form-inline" method="get" action=".">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" name="title_contains">
+        <button class="btn btn-elegant btn-rounded btn-sm my-0"  type="submit">Search</button>
+    </form>
+    {% for post in queryset %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              {% if post.author.verify == True %}
+                <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author.username }}<svg padding-left="10px" width="0.9em" height="0.9em" viewBox="0 0 16 16" class="bi bi-patch-check-fll" fill="#0D6EFD" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984a.5.5 0 0 0-.708-.708L7 8.793 5.854 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                </svg></a>
+              {% else %}
+              <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{post.author.username}}</a>
+              {% endif %}
+              <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            {% if post.image != "" %}
+                <img class="img-thumbnail rounded" src="{{post.image.url}}">
+            {% endif %}
+            <p class="article-content">{{ post.content }}</p>
+            {% if post.link != "" %}
+              <p><a class="artical-content" href="{{ post.link }}" target="_blank">{{ post.link_title }}</a></p>
+            {% endif %}
+          </div>
+        </article>
+    {% endfor %}
+{% endblock %}
