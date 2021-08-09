@@ -30,7 +30,6 @@ class Post(models.Model):
 
 class Comment(models.Model):
     post = models.ForeignKey(Post, related_name="comments", on_delete=models.CASCADE, null=True)
-    name = models.CharField(max_length=100)
     content = models.TextField()
     link = models.URLField(max_length=500, blank=True)
     link_title = models.CharField(max_length=100, blank=True)

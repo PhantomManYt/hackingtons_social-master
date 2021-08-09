@@ -28,7 +28,7 @@ SECRET_KEY = '0tf6+qq6t)e3-_5zfq_jb16$ahhs(d*5da1)ppa=_56%^wh5#t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['socializer-beta1.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -130,24 +130,13 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-
-from google.oauth2 import service_account
-GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
-    os.path.join(BASE_DIR,'credential.json'))
-
-DEFAULT_FILE_STORAGE = 'socializer.gcloud.GoodleCloudMediaFileStorage'
-GS_PROJECT_ID = 'socializer-322404'
-GS_BUCKET_NAME = 'socializerbucket'
-MEDIA_ROOT = 'media/'
-UPLOAD_ROOT = 'media/uploads'
-MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
-django_heroku.settings(locals())
 
 
 

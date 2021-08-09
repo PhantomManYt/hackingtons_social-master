@@ -128,7 +128,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
-    fields = ['name', 'content', 'link', 'link_title']
+    fields = ['content', 'link', 'link_title']
     
     success_url = '/'
     def form_valid(self, form):
