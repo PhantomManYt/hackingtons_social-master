@@ -28,7 +28,7 @@ SECRET_KEY = '0tf6+qq6t)e3-_5zfq_jb16$ahhs(d*5da1)ppa=_56%^wh5#t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['socializer-beta1.herokuapp.com']
 
 
 # Application definition
@@ -137,6 +137,7 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+django_heroku.settings(locals())
 
 
 
