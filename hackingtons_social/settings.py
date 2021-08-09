@@ -140,7 +140,7 @@ GS_PROJECT_ID = 'socializer-322404'
 GS_BUCKET_NAME = 'socializerbucket'
 MEDIA_ROOT = 'media/'
 UPLOAD_ROOT = 'media/uploads'
-MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(GS_BUCKET_NAME)
+MEDIA_URL = 'https://storage.googleapis.com/%7B%7D/'.format(GS_BUCKET_NAME)
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
