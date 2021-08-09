@@ -130,8 +130,17 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+
+from google.oauth2 import service_account
+GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+    os.path.join(BASE_DIR,'credential.json'))
+
+DEFAULT_FILE_STORAGE = 'socializer.gcloud.GoodleCloudMediaFileStorage'
+GS_PROJECT_ID = 'socializer-322404'
+GS_BUCKET_NAME = 'socializerbucket'
+MEDIA_ROOT = 'media/'
+UPLOAD_ROOT = 'media/uploads'
+MEDIA_URL = 'https://storage.googleapis.com/{}/'.format(socializerbucket)
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
