@@ -35,13 +35,14 @@ ALLOWED_HOSTS = ['socializer-beta1.herokuapp.com']
 
 INSTALLED_APPS = [
     'crispy_forms',
-    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
+    'cloudinary',
     'account.apps.AccountConfig',
     'users.apps.UsersConfig',
     'home.apps.HomeConfig',
