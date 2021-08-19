@@ -11,13 +11,13 @@
     <script src="https://kit.fontawesome.com/0e60f3be61.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'home/main.css' %}">
     {% block title %}
-      <title>Chinese Spyware</title>
+      <title>Chineese Spyware</title>
     {% endblock %}
 
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="{% url 'home' %}">Chinese Spyware</a>
+  <a class="navbar-brand" href="{% url 'home' %}">Chineese Spyware</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -28,15 +28,6 @@
         </li>
         {% if user.is_superuser %}
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'announce' %}">Announce</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'post-create' %}">Post</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'search' %}">Search</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="https://chinesespyware-beta2.herokuapp.com/admin/">Admin</a>
             </li>
         {% elif user.is_authenticated %}
@@ -46,7 +37,18 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'search' %}">Search</a>
             </li>
-        {% endif %}    
+        {% endif %}  
+        {% if user.is_staff %}
+          <li class="nav-item">
+                <a class="nav-link" href="{% url 'announce' %}">Announce</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'post-create' %}">Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'search' %}">Search</a>
+            </li>
+        {% endif %}
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Account

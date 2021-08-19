@@ -13,6 +13,7 @@
               <a class="mr-2" href="{% url 'user-posts' announce.person.username %}">{{announce.person.username}}</a>
               {% endif %}
               <small class="text-muted">{{ announce.date_posted|date:"F d, Y" }}</small>
+              <a class="mr-2" href="{% url 'show_profile' announce.person.profile.id %}">View Profile</a>
             </div>
             <p class="article-content">{{ announce.announcement }}</p>
           </div>

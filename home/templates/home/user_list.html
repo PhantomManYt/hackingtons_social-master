@@ -13,6 +13,7 @@
               <h2><a class="link-secondary" href="{% url 'user-posts' user.username %}">{{ user.username }}</a></h2>
               {% endif %}
               <small class="text-muted">{{ user.date_joined|date:"F d, Y" }}</small>
+              <a class="mr-2" href="{% url 'show_profile' user.profile.id %}">View Profile</a>
             </div>
           </div>
         </article>

@@ -176,6 +176,7 @@ class UserListView(ListView):
         context = super(UserListView, self).get_context_data(**kwargs)
         context['object_list'] = CustomUser.objects.all()
         return context
+
     
     
 

@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm, UserUpdateForm, ProfileUpdateForm
 from .filters import OrderFilter
 from home.models import Post
+from .models import Profile
 
 def register(request):
     if request.method == 'POST':
@@ -53,3 +54,17 @@ def BootstrapFilterView(request):
     }
     return render(request, "users/search_user.html", context)
 
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'users/view_profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        users = Profile.objects.all()
+        context = super(ShowProfilePageView, self).get_context_data(*args, **kwargs)
+
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+
+        context["page_user"] = page_user
+        return context
+    
