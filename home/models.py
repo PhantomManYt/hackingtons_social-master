@@ -7,7 +7,7 @@ import uuid
 
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    content = models.TextField()
+    content = models.TextField(blank=True)
     image = models.ImageField(null=True, blank=True, upload_to="images")
     link = models.URLField(max_length=500, blank=True)
     link_title = models.CharField(max_length=100, blank=True)
