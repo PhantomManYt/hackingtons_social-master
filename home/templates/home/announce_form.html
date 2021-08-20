@@ -15,6 +15,19 @@
                 </div>
             </form>
         </div>
+    {% elif user.is_staff %}
+        <div class="content-section">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Post</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
     {% else %}
         <h1>You don't have access to this page</h1>
         <a href="{% url 'home' %}">Return to the Home Page</a>

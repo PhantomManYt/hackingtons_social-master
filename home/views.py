@@ -71,7 +71,7 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'home/user_posts.html'  # <app>/<model>_<viewtype>.html
     context_object_name = 'posts'
-    paginate_by = 5
+    paginate_by = 1000
     def save(self, *args, **kwargs):
         if self.image:
             self.image = get_thumbnail(self.image, '250, 250', quality=99, format='JPEG')
